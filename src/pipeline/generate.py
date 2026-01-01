@@ -130,9 +130,6 @@ def generate_sales_email(job: JobSpec, tone: str, angle: str) -> str:
         f"開始: {_format_value(job.start_date)}",
         "",
         appeal,
-        "",
-        "ご興味がございましたら、詳細をお伝えいたします。",
-        "ご検討のほど、よろしくお願いいたします。",
     ]
     return "\n".join(lines)
 
