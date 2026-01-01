@@ -770,14 +770,11 @@ with left_col:
 
     job_text = st.text_area(
         "案件票テキスト",
-        value=st.session_state["job_text_input"],
         height=240,
         placeholder="案件票の内容をペーストしてください...\n\n「サンプル」ボタンで例を表示できます",
         label_visibility="collapsed",
-        key="job_text_area",
+        key="job_text_input",
     )
-
-    st.session_state["job_text_input"] = job_text
 
     char_count = len(job_text)
     st.markdown(
