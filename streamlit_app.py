@@ -130,42 +130,59 @@ st.markdown("""
     }
 
     /* サイドバー */
-    [data-testid="stSidebar"] {
+    [data-testid="stSidebar"],
+    [data-testid="stSidebar"] > div,
+    [data-testid="stSidebar"] [data-testid="stSidebarContent"] {
         background: var(--navy-900) !important;
+        background-color: var(--navy-900) !important;
     }
 
     [data-testid="stSidebar"] * {
-        color: var(--gray-100) !important;
-    }
-
-    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 {
         color: var(--white) !important;
     }
 
-    /* サイドバーボタン - 視認性改善 */
-    [data-testid="stSidebar"] .stButton > button {
+    [data-testid="stSidebar"] h1, 
+    [data-testid="stSidebar"] h2, 
+    [data-testid="stSidebar"] h3,
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] div {
+        color: var(--white) !important;
+    }
+
+    /* サイドバーボタン - 視認性改善（通常状態） */
+    [data-testid="stSidebar"] button,
+    [data-testid="stSidebar"] .stButton button,
+    [data-testid="stSidebar"] .stButton > button,
+    section[data-testid="stSidebar"] button {
         background: var(--navy-700) !important;
+        background-color: var(--navy-700) !important;
         color: var(--white) !important;
-        border: 1px solid var(--orange-500) !important;
-        font-weight: 500 !important;
+        border: 2px solid var(--orange-500) !important;
+        font-weight: 600 !important;
     }
 
-    [data-testid="stSidebar"] .stButton > button span {
+    [data-testid="stSidebar"] button *,
+    [data-testid="stSidebar"] .stButton button *,
+    [data-testid="stSidebar"] .stButton > button *,
+    section[data-testid="stSidebar"] button * {
         color: var(--white) !important;
+        background: transparent !important;
     }
 
-    [data-testid="stSidebar"] .stButton > button p {
-        color: var(--white) !important;
-    }
-
-    [data-testid="stSidebar"] .stButton > button:hover {
+    /* サイドバーボタン - ホバー状態 */
+    [data-testid="stSidebar"] button:hover,
+    [data-testid="stSidebar"] .stButton button:hover,
+    [data-testid="stSidebar"] .stButton > button:hover,
+    section[data-testid="stSidebar"] button:hover {
         background: var(--orange-500) !important;
+        background-color: var(--orange-500) !important;
         border-color: var(--orange-600) !important;
         color: var(--white) !important;
     }
 
-    [data-testid="stSidebar"] .stButton > button:hover span,
-    [data-testid="stSidebar"] .stButton > button:hover p {
+    [data-testid="stSidebar"] button:hover *,
+    section[data-testid="stSidebar"] button:hover * {
         color: var(--white) !important;
     }
 
