@@ -5,6 +5,23 @@ from __future__ import annotations
 import json
 import os
 
+def _get_api_key() -> str | None:
+    """APIキーを取得（環境変数 or Streamlit secrets）."""
+    # 環境変数から取得
+    key = os.environ.get("ANTHROPIC_API_KEY")
+    if key:
+        return key
+
+    # Streamlit Cloudのsecretsから取得
+    try:
+        import streamlit as st
+        if hasattr(st, "secrets") and "ANTHROPIC_API_KEY" in st.secrets:
+            return st.secrets["ANTHROPIC_API_KEY"]
+    except Exception:
+        pass
+
+    return None
+
 # モック用のサンプルレスポンス
 _MOCK_RESPONSE = {
     "title": "【Python】データ基盤エンジニア",
@@ -56,7 +73,7 @@ _MOCK_RESPONSE = {
 
 def is_api_available() -> bool:
     """Claude APIが利用可能かチェック."""
-    return bool(os.environ.get("ANTHROPIC_API_KEY"))
+    return bool(_get_api_key())
 
 
 def call_claude(prompt: str, max_tokens: int = 4096) -> str:
@@ -69,7 +86,7 @@ def call_claude(prompt: str, max_tokens: int = 4096) -> str:
     Returns:
         レスポンス文字列
     """
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    api_key = _get_api_key()
 
     if api_key:
         # 本番モード
@@ -104,7 +121,7 @@ def rewrite_text(text: str, instruction: str) -> str:
     Returns:
         リライト後のテキスト
     """
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    api_key = _get_api_key()
 
     if api_key:
         try:

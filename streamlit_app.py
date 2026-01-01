@@ -5,6 +5,9 @@ from __future__ import annotations
 import json
 from datetime import datetime
 
+from dotenv import load_dotenv
+load_dotenv()  # .envファイルを読み込み
+
 import streamlit as st
 
 from src.schema import JobSpec
