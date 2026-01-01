@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 
+
 def _get_api_key() -> str | None:
     """APIキーを取得（環境変数 or Streamlit secrets）."""
     # 環境変数から取得
@@ -21,6 +22,7 @@ def _get_api_key() -> str | None:
         pass
 
     return None
+
 
 # モック用のサンプルレスポンス
 _MOCK_RESPONSE = {
@@ -160,3 +162,4 @@ def rewrite_text(text: str, instruction: str) -> str:
             return value
 
     return f"【{instruction}版】\n{text}"
+
